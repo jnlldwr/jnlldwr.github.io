@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://fonts.cdnfonts.com/css/space-and-astronomy" rel="stylesheet">
+
+</head>
+
+<style>
+    body {
+        font-family: 'Space and Astronomy', sans-serif;
+        background-image: url(https://images.ctfassets.net/usf1vwtuqyxm/2phT56DSucuUqU6Icm6mCe/79c7ad7bca59b0626fe4e2e80d188ca5/HogwartsCastle_WB_F4_HogwartsThroughTheTrees_Illust_100615_Land.jpg?w=2880&fm=jpg&q=70);
+    }
+
+    p {
+        font-size: 12px;
+    }
+</style>
+
+<body>
+    <nav class="navbar navbar-expand-lg sticky-top navbar-dark text-white">
+        <div class="container-fluid">
+            <a class="navbar-brand mx-auto" href="index.html">HOGWARTS DIRECTORY</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="characters.html">Character</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="container-fluid px-0 d-flex justify-content-center align-items-center" style="height: 70vh;">
+        <div class="text-center text-white">
+            <h1>Welcome to Hogwarts!</h1>
+
+            <form class="d-flex justify-content-center mt-3" role="search" id="searchForm">
+                <input class="search-hover form-control rounded-start-pill" type="search"
+                    placeholder="Search for a character!" id="searchInput" aria-label="Search" style="font-size: 13px;">
+                <button class="btn btn-outline-light rounded-end-pill" type="submit">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-search" viewBox="0 0 16 16">
+                        <path
+                            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                    </svg>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div class="container m-5 text-center">
+        <div class="row">
+            <div class="col">
+                <div class="row justify-content-center" id="characterResults"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+    <script>
+        document.getElementById('searchInput').addEventListener('input', function () {
+            const searchInput = document.getElementById('searchInput').value.trim().toLowerCase();
+
+            if (searchInput === '') {
+                document.getElementById('characterResults').innerHTML = '';
+                return;
+            }
+
+            fetch('https://hp-api.onrender.com/api/characters')
+                .then(response => response.json())
+                .then(data => {
+                    const characterResults = document.getElementById('characterResults');
+                    characterResults.innerHTML = '';
+
+                    const filteredCharacters = data.filter(character => character.name.toLowerCase().includes(searchInput));
+
+                    if (filteredCharacters.length > 0) {
+                        filteredCharacters.forEach(character => {
+                            const characterCard = `
+                                <div class="card text-white bg-dark m-2" style="max-width: 16rem;">
+                                    <div class="card-header">
+                                        <a href="view.html?name=${encodeURIComponent(character.name)}">
+                                            <img src="${character.image}" class="card-img-top p-3">
+                                        </a>
+                                            <p class="card-text">${character.name}</p>
+                                    </div>
+                                </div>
+                            `;
+                            characterResults.innerHTML += characterCard;
+                        });
+                    } else {
+                        characterResults.innerHTML = '<p>No characters found.</p>';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching data:', error);
+                    alert('Oops! An error occurred while fetching character data.');
+                });
+        });
+    </script>
+</body>
+
+</html>
