@@ -17,10 +17,17 @@
             background-size: fill;
         }
 
+        .tracklist li {
+            cursor: pointer;
+        }
+
+        .tracklist li:hover {
+            text-decoration: underline;
+        }
+
         iframe {
             width: 100%;
-            max-width: 560px;
-            height: 315px;
+            height: 270px;
             border: none;
         }
     </style>
@@ -62,7 +69,7 @@
         </div>
     </nav>
 
-    <div class="container py-4">
+    <div class="container d-flex justify-content-between pt-4">
         <div class="row">
             <div class="col-md-6">
                 <h4 class="fw-bold">THE MOST BEAUTIFUL MOMENT IN LIFE, Pt. 1</h4>
@@ -86,15 +93,15 @@
 
                 <h4 class="fw-bold text-center mt-2">Tracks</h4>
                 <ul class="list-unstyled tracklist">
-                    <li>1. Intro: The Most Beautiful Moment in Life - 2:03</li>
-                    <li>2. I NEED U - 3:30</li>
-                    <li>3. Hold Me Tight - 4:34</li>
-                    <li>4. Skit: Expectation! - 2:27</li>
-                    <li>5. DOPE - 4:00</li>
-                    <li>6. Boyz with Fun - 4:04</li>
-                    <li>7. Converse High - 3:29</li>
-                    <li>8. Moving On - 4:52</li>
-                    <li>9. Outro: Love is Not Over - 2:23</li>
+                    <li onclick="changeVideo('-rEyikLdQxE')">1. Intro: The Most Beautiful Moment in Life - 2:03</li>
+                    <li onclick="changeVideo('jjskoRh8GTE')">2. I NEED U - 3:30</li>
+                    <li onclick="changeVideo('Ug2NNGY46f0')">3. Hold Me Tight - 4:34</li>
+                    <li onclick="changeVideo('6UAVGTLNwZs')">4. Skit: Expectation! - 2:27</li>
+                    <li onclick="changeVideo('BVwAVbKYYeM')">5. DOPE - 4:00</li>
+                    <li onclick="changeVideo('8I9d5ZFKMCM')">6. Boyz with Fun - 4:04</li>
+                    <li onclick="changeVideo('PJzVxAsuJzM')">7. Converse High - 3:29</li>
+                    <li onclick="changeVideo('X-qw40UVHs4')">8. Moving On - 4:52</li>
+                    <li onclick="changeVideo('5BYhXq2Emic')">9. Outro: Love is Not Over - 2:23</li>
                 </ul>
             </div>
         </div>
@@ -103,6 +110,13 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
+
+    <script>
+        function changeVideo(videoId) {
+            const iframe = document.getElementById('youtube-embed');
+            iframe.src = `https://www.youtube.com/embed/${videoId}`;
+        }
+    </script>
 </body>
 
 </html>
