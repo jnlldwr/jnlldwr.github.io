@@ -51,10 +51,7 @@
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">songs</a>
+                        <a class="nav-link active" aria-current="page" href="index.html">home</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -71,6 +68,10 @@
             </div>
         </div>
     </nav>
+
+    <div class="container">
+        <h2 class="fw-bold text-center mt-3">THE MOST BEAUTIFUL MOMENT IN LIFE TRILOGY</h2>
+    </div>
 
     <div id="pt1" class="album-section container pt-4">
         <div class="container d-flex justify-content-between pt-4">
@@ -230,11 +231,6 @@
             selectedSection.style.display = 'block';
         }
 
-        // function changeVideo(videoId) {
-        //     const iframe = document.querySelector('#youtube-embed-1, #youtube-embed-2, #youtube-embed-3');
-        //     iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
-        // }
-
         function changeVideo(videoId, albumId) {
             const iframe = document.getElementById(`youtube-embed-${albumId}`);
 
@@ -250,7 +246,6 @@
                 });
             });
         });
-
 
         showAlbum('pt1');   
     </script>
