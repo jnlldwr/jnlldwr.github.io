@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>YouTube Embed API</title>
+    <title>The Most Beautiful Moment in Life</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
@@ -15,6 +15,10 @@
             font-family: "GothamPro";
             background-image: url(https://ibighit.com/bts/images/bts/discography/hwayangyeonhwa-pt1/discography-bg.jpg);
             background-size: fill;
+        }
+
+        .album-section {
+            display: none;
         }
 
         .tracklist li {
@@ -58,10 +62,9 @@
                             trilogy
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Pt. 1</a></li>
-                            <li><a class="dropdown-item" href="#">Pt. 2</a></li>
-                            <li><a class="dropdown-item" href="#">Young Forever</a>
-                            </li>
+                            <li><span class="dropdown-item active" onclick="showAlbum('pt1')">Pt. 1</span></li>
+                            <li><span class="dropdown-item" onclick="showAlbum('pt2')">Pt. 2</span></li>
+                            <li><span class="dropdown-item" onclick="showAlbum('yf')">Young Forever</span></li>
                         </ul>
                     </li>
                 </ul>
@@ -69,40 +72,146 @@
         </div>
     </nav>
 
-    <div class="container d-flex justify-content-between pt-4">
-        <div class="row">
-            <div class="col-md-6">
-                <h4 class="fw-bold">THE MOST BEAUTIFUL MOMENT IN LIFE, Pt. 1</h4>
-                <p>3rd Mini Album</p>
-                <p><strong>Released:</strong> April 29, 2015</p>
-                <p><strong>Recorded:</strong> 2015</p>
-                <p><strong>Genre:</strong> Hip hop · R&B · Dance-pop · EDM · Pop</p>
-                <p class="mt-4">
-                    BTS has come back with their third mini album, <em>The Most Beautiful Moment in Life
-                        Pt.1</em>.<br><br>
-                    No longer just young boys, the album is an introduction to BTS as a group that continues to grow and
-                    develop. In each track are distilled poetic and pop emotions that allow the listener to sense both
-                    the soft and resounding musical transformation of the group.<br><br>
-                    The most beautiful moment in life pt.1 focuses on the uncertain future more than the glamour of
-                    youth.
-                </p>
-            </div>
-            <div class="col-md-6">
-                <iframe id="youtube-embed" src="https://www.youtube.com/embed/jjskoRh8GTE?si=aOnftU4gIDu_MSLV"
-                    title="YouTube video player" allowfullscreen></iframe>
+    <div id="pt1" class="album-section container pt-4">
+        <div class="container d-flex justify-content-between pt-4">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4 class="fw-bold">THE MOST BEAUTIFUL MOMENT IN LIFE, Pt. 1</h4>
+                    <p>3rd Mini Album</p>
+                    <p><strong>Released:</strong> April 29, 2015</p>
+                    <p><strong>Recorded:</strong> 2015</p>
+                    <p><strong>Genre:</strong> Hip hop · R&B · Dance-pop · EDM · Pop</p>
+                    <p class="mt-4">
+                        BTS has come back with their third mini album, <em>The Most Beautiful Moment in Life
+                            Pt.1</em>.<br><br>
+                        No longer just young boys, the album is an introduction to BTS as a group that continues to grow
+                        and develop. In each track are distilled poetic and pop emotions that allow the listener to
+                        sense
+                        both the soft and resounding musical transformation of the group.<br><br>
+                        The most beautiful moment in life pt.1 focuses on the uncertain future more than the glamour of
+                        youth.
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <iframe id="youtube-embed" src="https://www.youtube.com/embed/jjskoRh8GTE?si=aOnftU4gIDu_MSLV"
+                        title="YouTube video player" allowfullscreen></iframe>
 
-                <h4 class="fw-bold text-center mt-2">Tracks</h4>
-                <ul class="list-unstyled tracklist">
-                    <li onclick="changeVideo('-rEyikLdQxE')">1. Intro: The Most Beautiful Moment in Life - 2:03</li>
-                    <li onclick="changeVideo('jjskoRh8GTE')">2. I NEED U - 3:30</li>
-                    <li onclick="changeVideo('Ug2NNGY46f0')">3. Hold Me Tight - 4:34</li>
-                    <li onclick="changeVideo('6UAVGTLNwZs')">4. Skit: Expectation! - 2:27</li>
-                    <li onclick="changeVideo('BVwAVbKYYeM')">5. DOPE - 4:00</li>
-                    <li onclick="changeVideo('8I9d5ZFKMCM')">6. Boyz with Fun - 4:04</li>
-                    <li onclick="changeVideo('PJzVxAsuJzM')">7. Converse High - 3:29</li>
-                    <li onclick="changeVideo('X-qw40UVHs4')">8. Moving On - 4:52</li>
-                    <li onclick="changeVideo('5BYhXq2Emic')">9. Outro: Love is Not Over - 2:23</li>
-                </ul>
+                    <h4 class="fw-bold text-center mt-2">Tracks</h4>
+                    <ul class="list-unstyled tracklist">
+                        <li onclick="changeVideo('-rEyikLdQxE')">1. Intro: The Most Beautiful Moment in Life - 2:03</li>
+                        <li onclick="changeVideo('jjskoRh8GTE')">2. I NEED U - 3:30</li>
+                        <li onclick="changeVideo('Ug2NNGY46f0')">3. Hold Me Tight - 4:34</li>
+                        <li onclick="changeVideo('6UAVGTLNwZs')">4. Skit: Expectation! - 2:27</li>
+                        <li onclick="changeVideo('BVwAVbKYYeM')">5. DOPE - 4:00</li>
+                        <li onclick="changeVideo('8I9d5ZFKMCM')">6. Boyz with Fun - 4:04</li>
+                        <li onclick="changeVideo('PJzVxAsuJzM')">7. Converse High - 3:29</li>
+                        <li onclick="changeVideo('X-qw40UVHs4')">8. Moving On - 4:52</li>
+                        <li onclick="changeVideo('5BYhXq2Emic')">9. Outro: Love is Not Over - 2:23</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="pt2" class="album-section container pt-4">
+        <div class="container d-flex justify-content-between pt-4">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4 class="fw-bold">THE MOST BEAUTIFUL MOMENT IN LIFE, Pt. 2</h4>
+                    <p>3rd Mini Album</p>
+                    <p><strong>Released:</strong> November 30, 2015</p>
+                    <p><strong>Recorded:</strong> 2015</p>
+                    <p><strong>Genre:</strong> Hip hop · R&B · Dance-pop · EDM · Pop</p>
+                    <p class="mt-4">
+                        Released seven months after that first installment, The most beautiful moment in life pt.2 sings
+                        about the energy of youth barreling forward, embracing
+                        even the uncertainty and insecurity. <br><br>
+                        Now beginning to taste the bitterness of grown-up life,
+                        they can easily sense that life isn't always beautiful. However, they continue to sprint
+                        forward, relying only on their two destitute legs and the fire in their hearts. There's nothing
+                        else to do but keep running. Facing the powerlessness of one's youth, they collide and shatter
+                        and still cry out that “it's okay to fall, it's okay to get hurt.” That is the beauty of this
+                        moment.
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <iframe id="youtube-embed"
+                        src="https://www.youtube.com/embed/wKysONrSmew?list=OLAK5uy_kj4vr-5n1XT5shiO9znjr_bu7L3J4UQE0"
+                        title="YouTube video player" allowfullscreen></iframe>
+
+                    <h4 class="fw-bold text-center mt-2">Tracks</h4>
+                    <ul class="list-unstyled tracklist">
+                        <li onclick="changeVideo('ugrXP_YT9j0')">1. INTRO: Never Mind - 2:18</li>
+                        <li onclick="changeVideo('wKysONrSmew')">2. RUN - 3:57</li>
+                        <li onclick="changeVideo('Z4o7-6cFUF8')">3. Butterfly - 4:00</li>
+                        <li onclick="changeVideo('o1wuiLF04Rg')">4. Whalien 52 - 4:04</li>
+                        <li onclick="changeVideo('MlM1fbaHZTQ')">5. Ma City - 4:18</li>
+                        <li onclick="changeVideo('UsyiBESROnQ')">6. Silver Spoon - 3:54</li>
+                        <li onclick="changeVideo('pPqsKM9oujk')">7. SKIT: One Night in a Strange City - 4:25</li>
+                        <li onclick="changeVideo('cljJCtXYvuI')">8. Autumn Leaves - 4:28</li>
+                        <li onclick="changeVideo('MWQC2CFREes')">9. OUTRO: House of Cards - 2:57</li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="yf" class="album-section container pt-4">
+        <div class="container d-flex justify-content-between pt-4">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4 class="fw-bold">THE MOST BEAUTIFUL MOMENT IN LIFE, Young Forever</h4>
+                    <p>Compilation Album</p>
+                    <p><strong>Released:</strong> May 2, 2016</p>
+                    <p><strong>Recorded:</strong> 2015-2016</p>
+                    <p><strong>Genre:</strong> Hip hop · R&B · Dance-pop · EDM · Pop</p>
+                    <p class="mt-4">
+                        The final chapter of the story of The most beautiful moment in life. <br> <br>
+                        Having won over the world with their two-part The most beautiful moment in life series in 2015,
+                        BTS will release their special album The most beautiful moment in life: YOUNG FOREVER on May 2.
+                        True to the title of the albums, the series has enabled BTS to now be in the most beautiful
+                        moment of their lives. The most beautiful moment in life: YOUNG FOREVER is a special album that
+                        marks the conclusion of the epic journey of the series, containing the last stories told by
+                        young people who, despite an uncertain and insecure reality (The most beautiful moment in life
+                        pt.1) continue to surge forward (The most beautiful moment in life pt.2).
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <iframe id="youtube-embed" src="https://www.youtube.com/embed/jjskoRh8GTE?si=aOnftU4gIDu_MSLV"
+                        title="YouTube video player" allowfullscreen></iframe>
+
+                    <h4 class="fw-bold text-center mt-2">Track A</h4>
+                    <ul class="list-unstyled tracklist">
+                        <li onclick="changeVideo('71DAFvBh27g')">1. INTRO: The Most Beautiful Moment in Life - 2:03</li>
+                        <li onclick="changeVideo('jJSK8LOuQS8')">2. I NEED U - 3:31</li>
+                        <li onclick="changeVideo('9BzYhg0xBz4')">3. Hold Me Tight - 4:35</li>
+                        <li onclick="changeVideo('OTaW-dUtE4s')">4. Autumn Leaves - 4:28</li>
+                        <li onclick="changeVideo('HQ75YtD5fIY')">5. Butterfly Prologue Mix - 4:55</li>
+                        <li onclick="changeVideo('Dnozwk9wEdw')">6. RUN - 3:57</li>
+                        <li onclick="changeVideo('a2Zc9XmtO9s')">7. Ma City - 4:18</li>
+                        <li onclick="changeVideo('YW0A9NW6gj4')">8. Silver Spoon - 3:54</li>
+                        <li onclick="changeVideo('SOxxPpVjbWU')">9. DOPE - 4:00</li>
+                        <li onclick="changeVideo('Sc7il9lYoJ8')">10. Burning Up (FIRE) - 3:23</li>
+                        <li onclick="changeVideo('UV1OCxtw41A')">11. Save ME - 3:16</li>
+                        <li onclick="changeVideo('gwHrG7Dz4I8')">12. Epilogue: Young Forever - 2:51</li>
+                    </ul>
+
+                    <h4 class="fw-bold text-center mt-2">Track B</h4>
+                    <ul class="list-unstyled tracklist">
+                        <li onclick="changeVideo('HX6DqM9vHzg')">1. Converse High - 3:29</li>
+                        <li onclick="changeVideo('dW7VVyI6o3E')">2. Moving On - 4:52</li>
+                        <li onclick="changeVideo('i8XKDk8QicY')">3. Whalien 52 - 4:04</li>
+                        <li onclick="changeVideo('UKk_ahmuwaw')">4. Butterfly - 4:00</li>
+                        <li onclick="changeVideo('XO29I5Iaxvw')">5. House of Cards (Full Length Edition) - 3:46</li>
+                        <li onclick="changeVideo('X56_q6syVWs')">6. Love Is Not Over (Full Length Edition) - 3:41</li>
+                        <li onclick="changeVideo('iJbOZcwwKsw')">7. I NEED U (Urban Mix) - 3:35</li>
+                        <li onclick="changeVideo('OXts9eOboyY')">8. I NEED U (Remix) - 3:43</li>
+                        <li onclick="changeVideo('6CkOwFJGEXQ')">9. RUN (Ballad Mix) - 4:17</li>
+                        <li onclick="changeVideo('fJya2pFFy-8')">10. RUN (Alternative Mix) - 3:56</li>
+                        <li onclick="changeVideo('iWeGV_g-zJ4')">11. Butterfly (Alternative Mix) - 4:01</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
@@ -112,10 +221,22 @@
         crossorigin="anonymous"></script>
 
     <script>
+        function showAlbum(albumId) {
+            const sections = document.querySelectorAll('.album-section');
+            sections.forEach(section => {
+                section.style.display = 'none';
+            });
+
+            const selectedSection = document.getElementById(albumId);
+            selectedSection.style.display = 'block';
+        }
+
         function changeVideo(videoId) {
             const iframe = document.getElementById('youtube-embed');
             iframe.src = `https://www.youtube.com/embed/${videoId}`;
         }
+
+        showAlbum('pt1');
     </script>
 </body>
 
