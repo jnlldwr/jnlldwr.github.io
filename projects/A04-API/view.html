@@ -19,47 +19,19 @@
     p {
         font-size: 15px;
     }
-
-    /* .character-image {
-        max-width: 100%;
-        border-radius: 10px;
-    } */
-    /* 
-    .character-details {
-        background-color: rgb(158, 124, 80);
-        padding: 20px;
-        border-radius: 10px;
-        color: #fff;
-    } */
 </style>
 
 <body>
     <nav class="navbar navbar-expand-lg sticky-top navbar-dark text-white">
         <div class="container-fluid">
             <a class="navbar-brand mx-auto" href="index.html">HOGWARTS DIRECTORY</a>
-
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
-                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarText">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="index.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="characters.html">Characters</a>
-                    </li>
-                </ul>
-            </div>
         </div>
     </nav>
 
     <div class="container-fluid p-5 text-center d-flex bg-dark" style="margin-top: 100px;">
         <div class="col-md-4 text-center">
-            <img id="characterImage" class="text-align-center src="">
-            <p id=" noImage" class="text-align-center font-weight-bold d-block">No Image Found</p>
+            <img id="characterImage" class="text-align-center" src="" alt="Character Image">
+            <p id="noImage" class="text-align-center font-weight-bold d-none">No Image Found</p>
         </div>
         <div class="col-md-6 character-details bg-dark text-white">
             <h1 id="characterName" class="text-center mb-5"></h1>
@@ -68,6 +40,7 @@
             <p id="characterPatronus"></p>
             <p id="characterSpecies"></p>
             <p id="characterRole"></p>
+            <div id="characterDetails" class="text-white"></div>
         </div>
     </div>
 
@@ -85,18 +58,17 @@
                         if (character) {
                             document.getElementById('characterName').innerText = character.name;
                             document.getElementById('characterImage').src = character.image;
-                            document.getElementById('characterHouse').innerText = `House: ${character.house}`;
-                            document.getElementById('characterGender').innerText = `Gender: ${character.gender}`;
-                            document.getElementById('characterPatronus').innerText = `Patronus: ${character.patronus}`;
-                            document.getElementById('characterSpecies').innerText = `Species: ${character.species}`;
-                            document.getElementById('characterRole').innerText = `Role: ${character.role}`;
+                            document.getElementById('characterHouse').innerText = `House: ${character.house || 'N/A'}`;
+                            document.getElementById('characterGender').innerText = `Gender: ${character.gender || 'N/A'}`;
+                            document.getElementById('characterPatronus').innerText = `Patronus: ${character.patronus || 'N/A'}`;
+                            document.getElementById('characterSpecies').innerText = `Species: ${character.species || 'N/A'}`;
+                            document.getElementById('characterRole').innerText = `Role: ${character.role || 'N/A'}`;
 
                             if (character.image) {
                                 document.getElementById('noImage').style.display = 'none';
                             } else {
                                 document.getElementById('noImage').style.display = 'block';
                             }
-
                         } else {
                             document.getElementById('characterDetails').innerHTML = '<p>Character not found.</p>';
                         }

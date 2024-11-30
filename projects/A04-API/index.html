@@ -38,13 +38,12 @@
                         <a class="nav-link active" aria-current="page" href="index.html">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="characters.html">Character</a>
+                        <a class="nav-link" href="characters.html">Characters</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
-
 
     <div class="container-fluid px-0 d-flex justify-content-center align-items-center" style="height: 70vh;">
         <div class="text-center text-white">
@@ -66,7 +65,7 @@
 
     <div class="container m-5 text-center">
         <div class="row">
-            <div class="col">
+            <div class="col-12">
                 <div class="row justify-content-center" id="characterResults"></div>
             </div>
         </div>
@@ -77,44 +76,67 @@
         crossorigin="anonymous"></script>
 
     <script>
-        document.getElementById('searchInput').addEventListener('input', function () {
-            const searchInput = document.getElementById('searchInput').value.trim().toLowerCase();
+        const searchInput = document.getElementById('searchInput');
+        const characterResults = document.getElementById('characterResults');
 
-            if (searchInput === '') {
-                document.getElementById('characterResults').innerHTML = '';
+        let charactersData = [];
+
+        fetch('https://hp-api.onrender.com/api/characters')
+            .then(response => response.json())
+            .then(data => {
+                charactersData = data;
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+                alert('Oops! An error occurred while fetching character data.');
+            });
+
+        function displayCharacters(filteredCharacters) {
+            characterResults.innerHTML = '';
+
+            if (filteredCharacters.length > 0) {
+                filteredCharacters.forEach(character => {
+                    const characterCard = `
+                        <div class="card text-white bg-dark m-2" style="max-width: 16rem;">
+                            <div class="card-header">
+                                <a href="view.html?name=${encodeURIComponent(character.name)}">
+                                    <img src="${character.image}" class="card-img-top p-3">
+                                </a>
+                                <p class="card-text">${character.name}</p>
+                            </div>
+                        </div>
+                    `;
+                    characterResults.innerHTML += characterCard;
+                });
+            } else {
+                characterResults.innerHTML = '<p>No characters found.</p>';
+            }
+        }
+
+        searchInput.addEventListener('input', function () {
+            const searchTerm = searchInput.value.trim().toLowerCase();
+
+            if (searchTerm === '') {
+                characterResults.innerHTML = '';
                 return;
             }
 
-            fetch('https://hp-api.onrender.com/api/characters')
-                .then(response => response.json())
-                .then(data => {
-                    const characterResults = document.getElementById('characterResults');
-                    characterResults.innerHTML = '';
+            const filteredCharacters = charactersData.filter(character =>
+                character.name.toLowerCase().includes(searchTerm)
+            );
 
-                    const filteredCharacters = data.filter(character => character.name.toLowerCase().includes(searchInput));
+            displayCharacters(filteredCharacters);
+        });
 
-                    if (filteredCharacters.length > 0) {
-                        filteredCharacters.forEach(character => {
-                            const characterCard = `
-                                <div class="card text-white bg-dark m-2" style="max-width: 16rem;">
-                                    <div class="card-header">
-                                        <a href="view.html?name=${encodeURIComponent(character.name)}">
-                                            <img src="${character.image}" class="card-img-top p-3">
-                                        </a>
-                                            <p class="card-text">${character.name}</p>
-                                    </div>
-                                </div>
-                            `;
-                            characterResults.innerHTML += characterCard;
-                        });
-                    } else {
-                        characterResults.innerHTML = '<p>No characters found.</p>';
-                    }
-                })
-                .catch(error => {
-                    console.error('Error fetching data:', error);
-                    alert('Oops! An error occurred while fetching character data.');
-                });
+        document.getElementById('searchForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            const searchTerm = searchInput.value.trim().toLowerCase();
+            if (searchTerm !== '') {
+                const filteredCharacters = charactersData.filter(character =>
+                    character.name.toLowerCase().includes(searchTerm)
+                );
+                displayCharacters(filteredCharacters);
+            }
         });
     </script>
 </body>
